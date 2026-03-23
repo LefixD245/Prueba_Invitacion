@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ===== SOBRE ===== */
+.envelope-container {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: opacity 1s ease;
+}
+
+.envelope {
+  width: 260px;
+  height: 160px;
+  background: #d4af7f;
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.flap {
+  width: 100%;
+  height: 80px;
+  background: #b89666;
+  position: absolute;
+  top: 0;
+  transform-origin: top;
+  transition: transform 1s ease;
+}
+
+.open .flap {
+  transform: rotateX(180deg);
+}
+
+/* Fade out */
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===== CONTENIDO ===== */
+#contenido {
+  display: none;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* ===== SECCIONES ===== */
+.section {
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  /* 👇 IMPORTANTE: fondo tipo cover */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* 👇 OVERLAY oscuro para que el texto se lea */
+.section::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.section * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== TIPOGRAFÍA ===== */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+}
+
+h2 {
+  font-weight: 300;
+}
+
+/* ===== CONTADOR ===== */
+.countdown {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.box {
+  background: rgba(255,255,255,0.15);
+  padding: 15px;
+  border-radius: 10px;
+  min-width: 70px;
+}
+
+.box span {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* ===== BOTÓN ===== */
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #ff4e50, #f9d423);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== SOBRE ===== -->
+<div class="envelope-container" id="overlay">
+  <div class="envelope" id="sobre" onclick="abrirSobre()">
+    <div class="flap"></div>
+  </div>
+</div>
+
+<!-- ===== CONTENIDO ===== -->
+<div id="contenido">
+
+<!-- ===== HERO ===== -->
+<section class="section" style="
+/* 👇 CAMBIA ESTA IMAGEN */
+background-image: url('https://picsum.photos/1200/800?1');
+">
+  <h1>Mis XV Años</h1>
+  <h2>Estás invitado a un día especial</h2>
+</section>
+
+<!-- ===== CONTADOR ===== -->
+<section class="section" style="
+/* 👇 CAMBIA ESTA IMAGEN */
+background-image: url('https://picsum.photos/1200/800?2');
+">
+  <h1>Cuenta regresiva</h1>
+  <div class="countdown">
+    <div class="box"><span id="d"></span>Días</div>
+    <div class="box"><span id="h"></span>Horas</div>
+    <div class="box"><span id="m"></span>Min</div>
+    <div class="box"><span id="s"></span>Seg</div>
+  </div>
+</section>
+
+<!-- ===== HISTORIA ===== -->
+<section class="section" style="
+/* 👇 CAMBIA ESTA IMAGEN */
+background-image: url('https://picsum.photos/1200/800?3');
+">
+  <h1>Un momento especial</h1>
+  <p style="max-width:500px;">
+    Acompáñanos a celebrar este momento único lleno de alegría y recuerdos inolvidables.
+  </p>
+</section>
+
+<!-- ===== UBICACIÓN ===== -->
+<section class="section" style="
+/* 👇 CAMBIA ESTA IMAGEN */
+background-image: url('https://picsum.photos/1200/800?4');
+">
+  <h1>Ubicación</h1>
+  <a href="https://maps.google.com/?q=25.4385,-100.9737" target="_blank">
+    <button>Ver en Maps 📍</button>
+  </a>
+</section>
+
+<!-- ===== RSVP ===== -->
+<section class="section" style="
+/* 👇 CAMBIA ESTA IMAGEN */
+background-image: url('https://picsum.photos/1200/800?5');
+">
+  <h1>Confirma tu asistencia</h1>
+  <button>RSVP próximamente</button>
+</section>
+
+</div>
+
+<script>
+function abrirSobre() {
+  const sobre = document.getElementById("sobre");
+  const overlay = document.getElementById("overlay");
+
+  sobre.classList.add("open");
+
+  setTimeout(() => {
+    overlay.classList.add("fade-out");
+  }, 800);
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+    document.getElementById("contenido").style.display = "block";
+  }, 1600);
+}
+
+/* ===== CUENTA REGRESIVA ===== */
+const fecha = new Date("2026-05-20T20:00:00").getTime();
+
+setInterval(() => {
+  let now = new Date().getTime();
+  let diff = fecha - now;
+
+  document.getElementById("d").innerText = Math.floor(diff / (1000*60*60*24));
+  document.getElementById("h").innerText = Math.floor((diff / (1000*60*60)) % 24);
+  document.getElementById("m").innerText = Math.floor((diff / (1000*60)) % 60);
+  document.getElementById("s").innerText = Math.floor((diff / 1000) % 60);
+}, 1000);
+</script>
+
+</body>
+</html>
