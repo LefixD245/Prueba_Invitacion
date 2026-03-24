@@ -207,10 +207,33 @@ background-image: url('https://picsum.photos/1200/800?4');
 background-image: url('https://picsum.photos/1200/800?5');
 ">
   <h1>Confirma tu asistencia</h1>
-  <button>RSVP próximamente</button>
+  <form id="rsvpForm">
+  <input type="text" id="nombre" placeholder="Tu nombre" required><br><br>
+
+  <input type="number" id="personas" placeholder="¿Cuántas personas?" required><br><br>
+
+  <select id="asistencia">
+    <option value="si">Sí asistiré</option>
+    <option value="no">No asistiré</option>
+  </select><br><br>
+
+  <button type="submit">Confirmar</button>
+</form>
 </section>
 
 </div>
+  <form id="rsvpForm">
+  <input type="text" id="nombre" placeholder="Tu nombre" required><br><br>
+
+  <input type="number" id="personas" placeholder="¿Cuántas personas?" required><br><br>
+
+  <select id="asistencia">
+    <option value="si">Sí asistiré</option>
+    <option value="no">No asistiré</option>
+  </select><br><br>
+
+  <button type="submit">Confirmar</button>
+</form>
 
 <script>
 function abrirSobre() {
