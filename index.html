@@ -15,51 +15,9 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== SOBRE ===== */
-.envelope-container {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background: #111;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-  transition: opacity 1s ease;
-}
-
-.envelope {
-  width: 260px;
-  height: 160px;
-  background: #d4af7f;
-  position: relative;
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-.flap {
-  width: 100%;
-  height: 80px;
-  background: #b89666;
-  position: absolute;
-  top: 0;
-  transform-origin: top;
-  transition: transform 1s ease;
-}
-
-.open .flap {
-  transform: rotateX(180deg);
-}
-
-/* Fade out */
-.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
 /* ===== CONTENIDO ===== */
 #contenido {
-  display: none;
+  display: block;
   animation: fadeIn 1.5s ease forwards;
 }
 
@@ -201,12 +159,6 @@ button {
 
 <body>
 
-<div class="envelope-container" id="overlay">
-  <div class="envelope" id="sobre" onclick="abrirSobre()">
-    <div class="flap"></div>
-  </div>
-</div>
-
 <div id="contenido">
 
 <section class="section" style="background-image: url('./fotos/foto1.jpg');">
@@ -344,21 +296,6 @@ button {
 </div>
 
 <script>
-function abrirSobre() {
-  const sobre = document.getElementById("sobre");
-  const overlay = document.getElementById("overlay");
-
-  sobre.classList.add("open");
-
-  setTimeout(() => {
-    overlay.classList.add("fade-out");
-  }, 800);
-
-  setTimeout(() => {
-    overlay.style.display = "none";
-    document.getElementById("contenido").style.display = "block";
-  }, 1600);
-}
 
 const fecha = new Date("2026-05-07T06:30:00").getTime();
 
