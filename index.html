@@ -298,6 +298,7 @@ button {
 
   <form id="rsvpForm">
     <input type="text" id="nombre" placeholder="Tu nombre" required><br><br>
+    <input type="tel" id="telefono" placeholder="Número de teléfono" required><br><br>
     <input type="number" id="personas" placeholder="¿Cuántas personas?" required><br><br>
 
     <select id="asistencia">
@@ -365,12 +366,13 @@ form.addEventListener("submit", async (e) => {
 
   await addDoc(collection(db, "invitados"), {
     nombre: document.getElementById("nombre").value,
+    telefono: document.getElementById("telefono").value,
     personas: document.getElementById("personas").value,
     asistencia: document.getElementById("asistencia").value,
     fecha: new Date()
   });
 
-  alert("Confirmación enviada 🔥");
+  alert("Confirmación enviada. ¡Gracias! ❤️");
 });
 </script>
 
