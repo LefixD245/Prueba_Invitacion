@@ -161,6 +161,17 @@ button {
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 </style>
 </head>
 
@@ -175,7 +186,7 @@ button {
 
 <section class="section" style="background-image: url('./fotos/foto3.jpg');">
   <h1>Cuenta regresiva</h1>
-  <div class="countdown">
+  <div class="countdown fade-in">
     <div class="box"><span id="d"></span>Días</div>
     <div class="box"><span id="h"></span>Horas</div>
     <div class="box"><span id="m"></span>Min</div>
@@ -208,7 +219,7 @@ button {
   <p style="max-width:500px;">
     Te esperamos en punto de las 6:00 pm
   </p>
-  <img src="./fotos/salon.png" class="imagen-info" alt="Mapa ubicación">
+  <img src="./fotos/salon.png" class="imagen-info fade-in" alt="Mapa ubicación">
 </section>
 
 <section class="section" style="background-image: url('./fotos/foto52.jpg');">
@@ -230,12 +241,12 @@ button {
 
   <div class="reglas">
     
-    <div class="regla">
+    <div class="regla fade-in">
       <img src="./icons/gorra.png" alt="">
       <span>No gorras</span>
     </div>
 
-    <div class="regla">
+    <div class="regla fade-in">
       <img src="./icons/tenis.png" alt="">
       <span>No tenis</span>
     </div>
@@ -252,7 +263,7 @@ button {
 
   <div class="reglas">
     
-    <div class="regla">
+    <div class="regla fade-in">
       <img src="./icons/ninios.png" alt="">
       <span>No niños menores de 10 años</span>
     </div>
@@ -269,20 +280,18 @@ button {
 
   <div class="reglas">
     
-    <div class="regla">
+    <div class="regla fade-in">
       <img src="./icons/Money.png" alt="">
-      <span>Efectivo o digital</span>
+      <span>Regalo monetario Efecitvo o Digital</span>
     </div>
 
-     <div class="regla">
-      <img src="./icons/Liverpool.png" alt="">
+     <div class="regla fade-in">
+      <img src="./icons/liverpool.png" alt="">
       <span>Tienda departamental Liverpool</span>
     </div>
 
   </div>
 </section>
-
-
 
 <section class="section" style="background-image: url('./fotos/foto15.jpg');">
   <h1>Confirma tu asistencia</h1>
@@ -316,6 +325,20 @@ setInterval(() => {
   document.getElementById("m").innerText = Math.floor((diff / (1000*60)) % 60);
   document.getElementById("s").innerText = Math.floor((diff / 1000) % 60);
 }, 1000);
+
+const elementos = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+});
+
+elementos.forEach(el => observer.observe(el));
+
+
 </script>
 
 <!-- 🔥 FIREBASE -->
