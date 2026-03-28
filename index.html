@@ -139,15 +139,24 @@ button {
 }
 .reglas {
   margin-top: 20px;
-  max-width: 400px;
-  width: 100%;
+  max-width: 350px; /* más compacto */
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 🔥 espacio entre cada regla */
 }
 
 .regla {
   display: grid;
   grid-template-columns: 50px 1fr;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
+
+  background: rgba(255,255,255,0.08);
+  padding: 12px 16px;
+  border-radius: 12px;
 }
 
 .regla img {
@@ -158,6 +167,7 @@ button {
 
 .regla span {
   text-align: left;
+  line-height: 1.4;
 }
   /* Media query del contador */
 @media (max-width: 600px) {
@@ -305,7 +315,7 @@ button {
     </div>
 
      <div class="regla">
-      <img src="./icons/Liverpool.png" alt="">
+      <img src="./icons/liverpool.png" alt="">
       <span>Tienda departamental Liverpool</span>
     </div>
 
